@@ -30,13 +30,14 @@ spec:
               - fromFieldPath: spec.name
                 toFieldPath: spec.forProvider.name
         resources:
-          - name: resourcegroup
+          - name: repo
             base:
               apiVersion: repo.github.upbound.io/v1alpha1
               kind: Repository
               spec:
                 forProvider:
                   visibility: public
+                  autoInit: true
                 providerConfigRef:
                   name: default
             patches:
@@ -44,7 +45,6 @@ spec:
                 patchSetName: metadata
               - type: PatchSet
                 patchSetName: repo-name
-
     - functionRef:
         name: function-go-templating
       step: branches
@@ -54,19 +54,35 @@ spec:
         source: Inline
         inline:
           template: |
+            apiVersion: repo.github.upbound.io/v1alpha1
+            kind: DefaultBranch
+            metadata:
+              name: {{ $.observed.composite.resource.spec.name }}-main
+              annotations:
+                gotemplating.fn.crossplane.io/composition-resource-name: {{ $.observed.composite.resource.spec.name }}-default-branch
+            spec:
+              forProvider:
+                branch: main
+              providerConfigRef:
+                name: default
+            ---
+            
             {{ range .observed.composite.resource.spec.branches }}
+            {{- if ne . "main" }}
             ---
             apiVersion: repo.github.upbound.io/v1alpha1
             kind: Branch
             metadata:
-              name: {{ $.observed.composite.resource.spec.id }}-{{ . }}
+              name: {{ $.observed.composite.resource.spec.name }}-{{ . }}
               annotations:
-                crossplane.io/external-name: {{ . }}
-                gotemplating.fn.crossplane.io/composition-resource-name: {{ $.observed.composite.resource.spec.id }}-{{ . }}
+                crossplane.io/external-name: {{ $.observed.composite.resource.spec.name }}:{{ . }}
+                gotemplating.fn.crossplane.io/composition-resource-name: {{ $.observed.composite.resource.spec.name }}-{{ . }}
             spec:
               forProvider:
+                branch: {{ . }}
                 repositoryRef:
-                  branch: {{ $.observed.composite.resource.spec.id }}
+                  name: {{ $.observed.composite.resource.spec.name }}
               providerConfigRef:
                 name: default
+            {{ end }}
             {{ end }}

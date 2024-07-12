@@ -1,9 +1,10 @@
 apiVersion: bakito.net/v1alpha1
 kind: GithubRepoClaim
 metadata:
-  name: githubrepos.bakito.net
+  name: xsd-repo
   namespace: postgresql
 spec:
   name: xsd-repo
   branches:
     - main
+    - foo
