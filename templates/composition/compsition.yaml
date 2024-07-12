@@ -74,26 +74,6 @@ spec:
             {{ end }}
             {{ end }}
     - functionRef:
-        name: function-go-templating
-      step: default-branch
-      input:
-        apiVersion: gotemplating.fn.crossplane.io/v1beta1
-        kind: GoTemplate
-        source: Inline
-        inline:
-          template: |
-            apiVersion: repo.github.upbound.io/v1alpha1
-            kind: DefaultBranch
-            metadata:
-              name: {{ $.observed.composite.resource.spec.name }}-main
-              annotations:
-                gotemplating.fn.crossplane.io/composition-resource-name: {{ $.observed.composite.resource.spec.name }}-default-branch
-            spec:
-              forProvider:
-                branch: main
-              providerConfigRef:
-                name: default
-            ---
-    - functionRef:
-        name: upbound-function-auto-ready
-      step: function-auto-ready
+        name: function-auto-ready
+      step: automatically-detect-ready-composed-resources
+
