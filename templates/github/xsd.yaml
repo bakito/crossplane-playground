@@ -33,4 +33,4 @@ spec:
                     type: string
               required:
                 - name
-  {{- end }}
+{{- end }}

@@ -1,3 +1,5 @@
+{{- if .Capabilities.APIVersions.Has "apiextensions.crossplane.io/v1/Composition" }}
+{{- if .Capabilities.APIVersions.Has "bakito.net/v1alpha1/GithubRepo" }}
 {{-  if .Values.github.enabled }}
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
@@ -54,26 +56,10 @@ spec:
         source: Inline
         inline:
           template: |
-            {{ range .observed.composite.resource.spec.branches }}
-            {{- if ne . "main" }}
-            ---
-            apiVersion: repo.github.upbound.io/v1alpha1
-            kind: Branch
-            metadata:
-              name: {{ $.observed.composite.resource.spec.name }}-{{ . }}
-              annotations:
-                crossplane.io/external-name: {{ $.observed.composite.resource.spec.name }}:{{ . }}
-                gotemplating.fn.crossplane.io/composition-resource-name: {{ $.observed.composite.resource.spec.name }}-{{ . }}
-            spec:
-              forProvider:
-                branch: {{ . }}
-                repositoryRef:
-                  name: {{ $.observed.composite.resource.spec.name }}
-              providerConfigRef:
-                name: default
-            {{ end }}
-            {{ end }}
+            {{- .Files.Get "go-templates/github-branches.tpl" | nindent 12 }}
     - functionRef:
         name: function-auto-ready
       step: automatically-detect-ready-composed-resources
+{{- end }}
+{{- end }}
 {{- end }}

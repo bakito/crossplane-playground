@@ -1,12 +1,14 @@
 {{-  if  (and .Values.github.enabled .Values.github.claim.enabled) }}
+{{- if .Capabilities.APIVersions.Has "bakito.net/v1alpha1/GithubRepo" }}
 apiVersion: bakito.net/v1alpha1
 kind: GithubRepoClaim
 metadata:
   name: xsd-repo
-  namespace: postgresql
+  namespace: {{ .Release.Namespace }}
 spec:
   name: xsd-repo
   branches:
     - main
     - foo
+{{- end }}
 {{- end }}
