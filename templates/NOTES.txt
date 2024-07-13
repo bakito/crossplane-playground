@@ -1,0 +1,10 @@
+--------------------
+
+helm upgrade --install crossplane --namespace crossplane-system --create-namespace . --history-max 2
+
+Please define the gitlab token in Secret {{.Release.Namespace}}/github-creds in form
+
+{{-  if .Values.github.enabled }}
+stringData:
+  credentials: '{"token":"ghp_...","owner":"my-github-name"}'
+{{- end }}

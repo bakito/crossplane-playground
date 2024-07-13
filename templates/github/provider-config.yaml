@@ -8,6 +8,13 @@ spec:
     secretRef:
       key: credentials
       name: github-creds
-      namespace: crossplane-system
+      namespace: {{ .Release.Namespace }}
     source: Secret
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: github-creds
+  namespace: {{ .Release.Namespace }}
+type: Opaque
 {{- end }}
