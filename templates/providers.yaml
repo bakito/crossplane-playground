@@ -1,0 +1,12 @@
+{{- if .Capabilities.APIVersions.Has "pkg.crossplane.io/v1/Provider" }}
+{{- range $name, $package := .Values.providers }}
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-{{$name}}
+spec:
+  package: {{$package}}
+  skipDependencyResolution: false
+---
+{{- end }}
+{{- end }}

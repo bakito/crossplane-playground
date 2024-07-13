@@ -1,3 +1,4 @@
+{{-  if .Values.github.enabled }}
 apiVersion: github.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
@@ -9,3 +10,4 @@ spec:
       name: github-creds
       namespace: crossplane-system
     source: Secret
+{{- end }}

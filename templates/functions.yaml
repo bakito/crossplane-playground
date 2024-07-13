@@ -1,0 +1,12 @@
+{{- if .Capabilities.APIVersions.Has "pkg.crossplane.io/v1beta1/Function" }}
+{{- range $name, $package := .Values.functions }}
+apiVersion: pkg.crossplane.io/v1beta1
+kind: Function
+metadata:
+  name: function-{{$name}}
+spec:
+  package: {{$package}}
+  skipDependencyResolution: false
+---
+{{- end }}
+{{- end }}

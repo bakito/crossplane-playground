@@ -1,4 +1,4 @@
----
+{{-  if .Values.github.enabled }}
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
@@ -76,4 +76,4 @@ spec:
     - functionRef:
         name: function-auto-ready
       step: automatically-detect-ready-composed-resources
-
+{{- end }}

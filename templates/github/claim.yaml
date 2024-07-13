@@ -1,3 +1,4 @@
+{{-  if  (and .Values.github.enabled .Values.github.claim.enabled) }}
 apiVersion: bakito.net/v1alpha1
 kind: GithubRepoClaim
 metadata:
@@ -8,3 +9,4 @@ spec:
   branches:
     - main
     - foo
+{{- end }}

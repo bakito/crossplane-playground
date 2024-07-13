@@ -1,3 +1,4 @@
+{{-  if .Values.github.enabled }}
 ---
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
@@ -32,3 +33,4 @@ spec:
                     type: string
               required:
                 - name
+  {{- end }}

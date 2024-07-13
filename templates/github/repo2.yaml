@@ -1,3 +1,4 @@
+{{-  if .Values.github.enabled }}
 apiVersion: repo.github.upbound.io/v1alpha1
 kind: Repository
 metadata:
@@ -8,3 +9,4 @@ spec:
     visibility: public
   providerConfigRef:
     name: default
+{{- end }}
