@@ -1,26 +1,11 @@
 providers:
-  kubernetes:
-    image:
-      repository: xpkg.upbound.io/crossplane-contrib/provider-kubernetes
-      tag: v0.14.0
-  github:
-    image:
-      repository: xpkg.upbound.io/coopnorge/provider-github
-      tag: v0.10.0
+  kubernetes: xpkg.upbound.io/crossplane-contrib/provider-kubernetes:v0.14.0
+  github: xpkg.upbound.io/coopnorge/provider-github:v0.10.0
 
 functions:
-  auto-ready:
-    image:
-      repository: xpkg.upbound.io/crossplane-contrib/function-auto-ready
-      tag: v0.2.1
-  go-templating:
-    image:
-      repository: xpkg.upbound.io/crossplane-contrib/function-go-templating
-      tag: v0.4.1
-  patch-and-transform:
-    image:
-      repository: xpkg.upbound.io/crossplane-contrib/function-patch-and-transform
-      tag: v0.6.0
+  auto-ready: xpkg.upbound.io/crossplane-contrib/function-auto-ready:v0.2.1
+  go-templating: xpkg.upbound.io/crossplane-contrib/function-go-templating:v0.4.1
+  patch-and-transform: xpkg.upbound.io/crossplane-contrib/function-patch-and-transform:v0.6.0
 
 github:
   enabled: true

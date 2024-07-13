@@ -5,7 +5,7 @@ kind: Function
 metadata:
   name: function-{{$name}}
 spec:
-  package: {{$package.image.repository}}:{{$package.image.tag}}
+  package: {{$package}}
   skipDependencyResolution: false
 ---
 {{- end }}
