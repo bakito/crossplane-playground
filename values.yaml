@@ -1,6 +1,7 @@
 providers:
   kubernetes: xpkg.upbound.io/crossplane-contrib/provider-kubernetes:v0.14.0
   github: xpkg.upbound.io/coopnorge/provider-github:v0.10.0
+  minio: xpkg.upbound.io/vshn/provider-minio:v0.4.0
 
 functions:
   auto-ready: xpkg.upbound.io/crossplane-contrib/function-auto-ready:v0.2.1
@@ -11,3 +12,6 @@ github:
   enabled: true
   claim:
     enabled: true
+
+minio:
+  enabled: true

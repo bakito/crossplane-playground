@@ -1,0 +1,16 @@
+{{- if .Values.minio.enabled }}
+{{- if .Capabilities.APIVersions.Has "minio.crossplane.io/v1/ProviderConfig" }}
+apiVersion: minio.crossplane.io/v1
+kind: ProviderConfig
+metadata:
+  name: provider-config
+spec:
+  credentials:
+    apiSecretRef:
+      name: minio-secret
+      namespace: crossplane-system
+    source: InjectedIdentity
+  minioURL: https://minio-api.nas.bakito.net:8443
+status: {}
+{{- end }}
+{{- end }}

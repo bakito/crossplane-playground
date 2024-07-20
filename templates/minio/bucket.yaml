@@ -1,0 +1,15 @@
+{{- if .Values.minio.enabled }}
+{{- if .Capabilities.APIVersions.Has "minio.crossplane.io/v1/Bucket" }}
+apiVersion: minio.crossplane.io/v1
+kind: Bucket
+metadata:
+  name: bucket-local-dev
+spec:
+  forProvider:
+    region: eu-central-2
+  providerConfigRef:
+    name: provider-config
+status:
+  atProvider: {}
+{{- end }}
+{{- end }}
