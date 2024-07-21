@@ -5,7 +5,7 @@ kind: Provider
 metadata:
   name: provider-{{$name}}
 spec:
-  package: {{$package}}
+  package: {{$package.image.repository}}:{{$package.image.tag}}
   skipDependencyResolution: false
 ---
 {{- end }}
