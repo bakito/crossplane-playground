@@ -10,7 +10,7 @@ providers:
   minio:
     image:
       repository: xpkg.upbound.io/vshn/provider-minio
-      tag: v0.4.0
+      tag: v0.4.1
 
 functions:
   auto-ready:
