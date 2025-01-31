@@ -16,7 +16,7 @@ functions:
   auto-ready:
     image:
       repository: xpkg.upbound.io/crossplane-contrib/function-auto-ready
-      tag: v0.4.0
+      tag: v0.4.1
   go-templating:
     image:
       repository: xpkg.upbound.io/crossplane-contrib/function-go-templating
