@@ -28,7 +28,7 @@ functions:
   status-transformer:
     image:
       repository: xpkg.upbound.io/crossplane-contrib/function-status-transformer
-      tag: v0.4.1
+      tag: v0.5.0
 
 github:
   enabled: true
