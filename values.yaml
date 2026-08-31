@@ -2,7 +2,7 @@ providers:
   kubernetes:
     image:
       repository: xpkg.upbound.io/crossplane-contrib/provider-kubernetes
-      tag: v1.3.0@sha256:53cdc7739734ec4e48b339d5fa950d8e049ee457e30895666f431d8a3de7d3b1
+      tag: v1.3.1@sha256:183133c96a306dd8a8be13fa4b44065e170335b70d35696716ddb6df6a0a375c
   github:
     image:
       repository: xpkg.upbound.io/coopnorge/provider-github
