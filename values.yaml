@@ -20,7 +20,7 @@ functions:
   go-templating:
     image:
       repository: xpkg.upbound.io/crossplane-contrib/function-go-templating
-      tag: v0.12.5@sha256:064e60c64420832b947fba90f4bc498b9e8894d80d0c1394dbf298a4363ef59b
+      tag: v0.13.0@sha256:d57fcf0b05f50d7ed7fa3a2e754fdc536aa78c22fc38505074d2dab114dda0ec
   patch-and-transform:
     image:
       repository: xpkg.upbound.io/crossplane-contrib/function-patch-and-transform
