@@ -24,7 +24,7 @@ functions:
   patch-and-transform:
     image:
       repository: xpkg.upbound.io/crossplane-contrib/function-patch-and-transform
-      tag: v0.10.9@sha256:4d729ddc8ee1b8417a205163746a6d84b523c6c9b8827c5669b94fcf5027babf
+      tag: v0.11.0@sha256:677ad7d06eab2da219c9f28a7f6393fd74e5cfe445b98e324a23736163fb4e99
   status-transformer:
     image:
       repository: xpkg.upbound.io/crossplane-contrib/function-status-transformer
